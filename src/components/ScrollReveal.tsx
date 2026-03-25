@@ -30,9 +30,9 @@ const ScrollReveal = ({ children, className = "", delay = 0 }: ScrollRevealProps
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
-        filter: visible ? "blur(0px)" : "blur(4px)",
-        transition: `all 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        transform: visible ? "translateY(0)" : "translateY(12px)",
+        filter: visible ? "blur(0px)" : "blur(2px)",
+        transition: `all 0.5s cubic-bezier(0.2, 0, 0, 1) ${delay}ms`,
       }}
     >
       {children}

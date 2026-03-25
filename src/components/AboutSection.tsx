@@ -29,8 +29,6 @@ const AboutSection = () => {
             <p><strong>Name:</strong> ${data.name}</p>
             <p><strong>Mobile:</strong> ${data.mobile}</p>
             <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Business Name:</strong> ${data.business}</p>
-            <p><strong>Website:</strong> ${data.website}</p>
             <p><strong>Services:</strong> ${data.services}</p>
           `
         })
@@ -53,15 +51,15 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="py-24 md:py-32 relative overflow-hidden bg-slate-50/50">
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden bg-[#f6f9fc]">
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* Left Side: Content */}
           <ScrollReveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-border/50 text-xs font-medium text-primary mb-6 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-border/60 text-xs font-medium text-primary mb-6 shadow-none">
               <span className="w-2 h-2 rounded-full bg-primary" />
               ABOUT ZORIX
             </div>
@@ -90,9 +88,11 @@ const AboutSection = () => {
           <ScrollReveal delay={200} className="relative">
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 via-purple-500/10 to-transparent blur-2xl rounded-3xl opacity-70" />
             
-            <div className="relative bg-white border border-slate-100 shadow-[0_20px_40px_rgb(0,0,0,0.08)] p-8 md:p-10 rounded-3xl">
+            <div className="relative bg-white/70 backdrop-blur border border-border/60 shadow-soft p-7 md:p-10 rounded-[2rem]">
               <div className="mb-8 text-center">
-                <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 mb-2">Let's Grow Your Business 🚀</h3>
+                <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 mb-2">
+                  Let&apos;s Grow Your Business
+                </h3>
                 <p className="text-muted-foreground text-sm font-medium">100% free consultation. No commitment.</p>
               </div>
 
@@ -104,8 +104,8 @@ const AboutSection = () => {
                       type="text" 
                       name="name"
                       required
-                      placeholder="John Doe"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
+                      
+                      className="w-full px-4 py-3 rounded-xl bg-white/80 border border-border/60 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus:border-primary/60 transition-all duration-200"
                     />
                   </div>
                   <div className="space-y-2">
@@ -114,8 +114,8 @@ const AboutSection = () => {
                       type="tel" 
                       name="mobile"
                       required
-                      placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
+                      
+                      className="w-full px-4 py-3 rounded-xl bg-white/80 border border-border/60 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus:border-primary/60 transition-all duration-200"
                     />
                   </div>
                 </div>
@@ -126,30 +126,9 @@ const AboutSection = () => {
                     type="email" 
                     name="email"
                     required
-                    placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
+                    
+                    className="w-full px-4 py-3 rounded-xl bg-white/80 border border-border/60 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus:border-primary/60 transition-all duration-200"
                   />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground/80">Business Name</label>
-                    <input 
-                      type="text" 
-                      name="business"
-                      placeholder="Your Company Ltd."
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground/80">Website URL</label>
-                    <input 
-                      type="url" 
-                      name="website"
-                      placeholder="https://yourwebsite.com"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
-                    />
-                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -158,7 +137,7 @@ const AboutSection = () => {
                     name="services"
                     required
                     defaultValue=""
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 text-foreground"
+                    className="w-full px-4 py-3 rounded-xl bg-white/80 border border-border/60 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus:border-primary/60 transition-all duration-200 text-foreground"
                   >
                     <option value="" disabled>Select a service...</option>
                     <option value="social-media">Social Media Marketing</option>
@@ -174,7 +153,7 @@ const AboutSection = () => {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 mt-4 bg-gradient-to-r from-purple-600 to-primary text-white font-semibold rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full py-4 mt-4 bg-gradient-to-r from-primary to-purple-600 text-primary-foreground font-semibold rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Sending Request..." : "Get Free Consultation"}
                 </button>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import zorixLogo from "@/assets/zorix-logo.png";
@@ -11,10 +11,23 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border shadow-sm">
-      <div className="container flex items-center justify-between h-16 md:h-20">
+    <nav
+      className={[
+        "fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300",
+        scrolled || open ? "bg-white/80 backdrop-blur border-border/60 shadow-sm" : "bg-transparent border-transparent",
+      ].join(" ")}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-14 md:h-16">
         <a href="#home" className="flex items-center gap-2 z-50 transition-opacity hover:opacity-80">
           <img src={zorixLogo} alt="ZORIX Logo" className="h-14 md:h-16 w-auto mix-blend-multiply" />
         </a>
@@ -25,7 +38,7 @@ const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="relative text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </a>
@@ -42,25 +55,30 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-background border-t border-border animate-fade-up">
-          <div className="container py-4 flex flex-col gap-3">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground py-2"
-              >
-                {l.label}
-              </a>
-            ))}
-            <Button size="default" className="w-full mt-2" asChild>
-              <a href="#cta">Get a Quote</a>
-            </Button>
-          </div>
+      <div
+        className={[
+          "md:hidden absolute left-0 right-0 top-14 z-40 border-t border-border/60 bg-white/80 backdrop-blur overflow-hidden transition-all duration-300 ease-out",
+          open ? "opacity-100 translate-y-0 max-h-80" : "opacity-0 -translate-y-2 max-h-0 pointer-events-none",
+        ].join(" ")}
+      >
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
+            >
+              {l.label}
+            </a>
+          ))}
+          <Button size="default" className="w-full mt-2" asChild>
+            <a href="#cta" onClick={() => setOpen(false)}>
+              Get a Quote
+            </a>
+          </Button>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

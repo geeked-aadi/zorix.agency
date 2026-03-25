@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const CTASection = () => (
-  <section id="cta" className="py-24 md:py-32 relative overflow-hidden bg-slate-50">
-    <div className="absolute inset-0 bg-primary/5" />
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
+  <section id="cta" className="py-24 md:py-32 relative overflow-hidden bg-[#f6f9fc]">
+    <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[160px] pointer-events-none" />
     
-    <div className="container relative z-10">
+    <div className="max-w-7xl mx-auto px-6 relative z-10">
       <ScrollReveal>
-        <div className="max-w-3xl mx-auto text-center p-10 md:p-16 rounded-[2.5rem] bg-white/70 backdrop-blur-xl border border-white shadow-[0_8px_40px_rgb(0,0,0,0.06)] relative overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center p-8 md:p-16 rounded-[2.5rem] bg-white/70 backdrop-blur-xl border border-border/60 shadow-soft relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
           
@@ -21,9 +21,10 @@ const CTASection = () => (
             </p>
             <Button
               size="lg"
-              className="rounded-full px-8 py-6 text-lg shadow-[0_4px_14px_0_rgba(var(--primary),0.39)] hover:shadow-[0_6px_20px_rgba(var(--primary),0.23)] transition-all hover:-translate-y-1"
+              className="rounded-full px-8 py-6 text-lg shadow-soft hover:shadow-hover transition-all hover:-translate-y-0.5"
+              asChild
             >
-              Start Your Project
+              <a href="#about">Start Your Project</a>
             </Button>
           </div>
         </div>

@@ -1,156 +1,115 @@
-import { useEffect, useState } from "react";
-import { PhoneCall, TrendingUp, Users, Target, BarChart3 } from "lucide-react";
+import { PhoneCall, TrendingUp, Users, Target } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const HeroSection = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <section 
-      id="home" 
-      className={`relative w-full min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-[#020817] via-[#0f172a] to-[#06b6d4]/20 transition-opacity duration-500 ${scrolled ? 'opacity-90' : 'opacity-100'}`}
-    >
-      {/* Background Star Particles */}
-      <div className="absolute inset-0 z-0">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-white rounded-full opacity-0 animate-star-movement"
-            style={{
-              width: Math.random() * 3 + 1 + "px",
-              height: Math.random() * 3 + 1 + "px",
-              top: Math.random() * 100 + "%",
-              left: Math.random() * 100 + "%",
-              animationDelay: Math.random() * 8 + "s",
-              animationDuration: Math.random() * 10 + 10 + "s",
-            }}
-          />
-        ))}
+    <section id="home" className="relative w-full min-h-screen flex items-center pt-20 md:pt-24 overflow-hidden bg-[#f6f9fc]">
+      {/* Subtle animated gradient blobs (kept minimal) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[36rem] h-[36rem] rounded-full bg-gradient-to-r from-cyan-200/40 via-blue-200/25 to-purple-200/20 blur-[90px] opacity-60 motion-safe:animate-pulse-glow" />
+        <div
+          className="absolute -bottom-24 -left-24 w-[32rem] h-[32rem] rounded-full bg-gradient-to-r from-indigo-200/30 via-cyan-200/20 to-transparent blur-[110px] opacity-50 motion-safe:animate-float-delayed"
+          style={{ animationDelay: "1.5s" }}
+        />
       </div>
 
-      {/* Subtle Glow Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container relative z-10 grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
         {/* Left: Text Content */}
-        <div className="flex flex-col gap-6 text-white z-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full w-fit backdrop-blur-md animate-fade-down">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span className="text-xs font-medium tracking-wider text-cyan-200 uppercase">ZORIX - Next-Gen Solutions</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold font-display leading-[1.1] animate-fade-up">
-            Taking Your Business To{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 [text-shadow:0_0_30px_rgba(34,211,238,0.3)]">
-              New Heights!
-            </span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-slate-300 max-w-lg leading-relaxed animate-fade-up" style={{ animationDelay: '200ms' }}>
-            Our digital marketing strategies are out of this world. We build precision-crafted funnels, stunning experiences, and scalable growth systems.
-          </p>
-          
-          <div className="flex items-center gap-4 mt-6 animate-fade-up" style={{ animationDelay: '400ms' }}>
-            <a 
-              href="tel:7483147208"
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full font-bold text-white overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] cursor-pointer"
-            >
-              {/* Shimmer effect simulation via skew and translate */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transition-transform duration-1000 ease-in-out" />
-              <PhoneCall size={20} className="group-hover:animate-pulse" />
-              <span>Contact Us Now</span>
-            </a>
-          </div>
-        </div>
+        <ScrollReveal>
+          <div className="flex flex-col gap-8 text-foreground">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full w-fit border border-border/60 bg-white/60 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-xs font-medium tracking-wider text-primary uppercase">ZORIX - Next-Gen Solutions</span>
+            </div>
 
-        {/* Right: Animated Visual (Professional Dashboard) */}
-        <div className="relative w-full aspect-square md:aspect-auto md:min-h-[600px] flex items-center justify-center pointer-events-auto group">
-          {/* Glowing Halo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-cyan-500/10 rounded-full blur-[100px] animate-pulse-glow transition-all duration-700 group-hover:bg-cyan-500/20 group-hover:scale-110" />
-          
-          {/* Main Glassmorphic Dashboard */}
-          <div className="relative z-10 w-full max-w-[480px] animate-float transition-transform duration-700 group-hover:scale-105">
-            <div className="bg-slate-900/40 backdrop-blur-2xl border border-white/10 p-6 md:p-8 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]">
-              <div className="flex items-center justify-between mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.06]">
+              Taking Your Business To{" "}
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+                New Heights!
+              </span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
+              We build precision-crafted funnels, stunning experiences, and scalable growth systems that deliver measurable results.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <a
+                href="tel:7483147208"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:opacity-90 w-full sm:w-auto"
+              >
+                <PhoneCall size={18} />
+                Contact Sales
+              </a>
+
+              <Button size="lg" variant="outline" className="rounded-full px-6 w-full sm:w-auto" asChild>
+                <a href="/portfolio">View Portfolio</a>
+              </Button>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Right: Product-like mockup */}
+        <ScrollReveal delay={120}>
+          <div className="relative w-full flex items-center justify-center">
+            <div className="absolute inset-0 -z-10 w-full h-full rounded-[3rem] bg-gradient-to-br from-primary/10 via-purple-500/10 to-transparent blur-2xl" />
+
+            <div className="w-full max-w-md m-4 md:m-0 rounded-[2.5rem] border border-border/70 bg-white/65 backdrop-blur p-6 md:p-8 shadow-soft transition-transform duration-300 hover:-translate-y-0.5">
+              <div className="flex items-start justify-between gap-4 mb-6">
                 <div>
-                  <h3 className="text-white font-medium text-lg">Revenue Growth</h3>
-                  <p className="text-sm text-cyan-400 font-medium">+124.5% this quarter</p>
+                  <h3 className="text-lg font-semibold text-foreground">Growth Snapshot</h3>
+                  <p className="text-sm text-muted-foreground">What we optimize every week</p>
                 </div>
-                <div className="bg-cyan-500/20 text-cyan-400 p-3 rounded-xl shadow-[0_0_30px_rgba(6,182,212,0.3)]">
-                  <TrendingUp size={28} />
+                <div className="w-11 h-11 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center text-primary">
+                  <TrendingUp size={20} />
                 </div>
               </div>
-              
-              {/* Simulated Bar Chart */}
-              <div className="flex items-end justify-between h-48 gap-3 mb-2">
-                {[40, 30, 60, 50, 85, 75, 110].map((height, i) => (
-                  <div key={i} className="w-full bg-slate-800/50 rounded-t-md relative group/bar overflow-hidden">
-                    <div 
-                      className="absolute bottom-0 w-full bg-gradient-to-t from-cyan-600 to-cyan-300 rounded-t-md transition-all duration-500 group-hover/bar:bg-gradient-to-t group-hover/bar:from-blue-500 group-hover/bar:to-cyan-200 group-hover/bar:shadow-[0_0_15px_rgba(34,211,238,0.5)]"
-                      style={{ height: `${height}%`, animation: `fade-up 1s ease-out ${i * 0.1}s forwards`, opacity: 0 }}
-                    />
+
+              <div className="grid gap-4">
+                <div className="rounded-2xl border border-border/60 bg-white/70 p-4 flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/15 flex items-center justify-center text-emerald-600">
+                    <Target size={20} />
                   </div>
-                ))}
-              </div>
-              <div className="flex justify-between mt-4 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                <span>Mon</span>
-                <span>Tue</span>
-                <span>Wed</span>
-                <span>Thu</span>
-                <span>Fri</span>
-                <span>Sat</span>
-                <span>Sun</span>
-              </div>
-            </div>
-          </div>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Conversion</p>
+                    <p className="text-2xl font-bold text-foreground">4.8%</p>
+                  </div>
+                </div>
 
-          {/* Floating Metric Card 1: Conversion */}
-          <div className="absolute top-[15%] right-[0%] md:-right-8 z-20 animate-float-delayed bg-slate-900/60 p-4 rounded-2xl backdrop-blur-xl border border-white/10 shadow-2xl transition-transform hover:scale-110">
-            <div className="flex items-center gap-4">
-              <div className="bg-emerald-500/20 p-3 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-                <Target className="text-emerald-400" size={24} />
-              </div>
-              <div>
-                <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">Conversion</p>
-                <p className="text-xl font-bold text-white">4.8%</p>
-              </div>
-            </div>
-          </div>
+                <div className="rounded-2xl border border-border/60 bg-white/70 p-4 flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/15 flex items-center justify-center text-blue-600">
+                    <Users size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Active Users</p>
+                    <p className="text-2xl font-bold text-foreground">12.4k</p>
+                  </div>
+                </div>
 
-          {/* Floating Metric Card 2: Active Users */}
-          <div className="absolute bottom-[15%] left-[0%] md:-left-8 z-20 animate-float bg-slate-900/60 p-4 rounded-2xl backdrop-blur-xl border border-white/10 shadow-2xl transition-transform hover:scale-110" style={{ animationDelay: '1s' }}>
-            <div className="flex items-center gap-4">
-              <div className="bg-blue-500/20 p-3 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                <Users className="text-blue-400" size={24} />
+                <div className="rounded-2xl border border-border/60 bg-white/70 p-4 flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/15 flex items-center justify-center text-purple-600">
+                    <TrendingUp size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Campaigns</p>
+                    <p className="text-2xl font-bold text-foreground">18 Active</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">Active Users</p>
-                <p className="text-xl font-bold text-white">12.4k</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Floating Metric Card 3: Campaigns */}
-          <div className="absolute top-[10%] left-[5%] md:top-8 md:left-8 z-20 animate-float-delayed bg-slate-900/60 p-3 rounded-2xl backdrop-blur-xl border border-white/10 shadow-2xl transition-transform hover:scale-110" style={{ animationDelay: '2s' }}>
-            <div className="flex items-center gap-3">
-              <div className="bg-purple-500/20 p-2 rounded-lg">
-                <BarChart3 className="text-purple-400" size={20} />
-              </div>
-              <div>
-                <p className="text-[10px] text-slate-400 font-medium uppercase tracking-wider">Campaigns</p>
-                <p className="text-sm font-bold text-white">18 Active</p>
+              <div className="mt-6 rounded-2xl border border-border/60 bg-white/60 p-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Last 7 days</span>
+                  <span className="font-semibold text-foreground">+124.5%</span>
+                </div>
+                <div className="mt-3 h-2 rounded-full bg-primary/10 overflow-hidden">
+                  <div className="h-full w-2/3 bg-gradient-to-r from-primary to-purple-500 rounded-full transition-all duration-300 hover:w-full" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

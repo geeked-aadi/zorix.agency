@@ -26,9 +26,9 @@ const Portfolio = () => {
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Navbar />
       
-      <main className="flex-grow pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
+      <main className="flex-grow pt-20 pb-16 md:pt-28 md:pb-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
-        <div className="container relative z-10">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <ScrollReveal className="mb-16">
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-tight mb-6 text-foreground">
               My <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Works</span>
