@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -21,12 +22,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={[
-        "fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300",
-        scrolled || open ? "bg-white/80 backdrop-blur border-border/60 shadow-sm" : "bg-transparent border-transparent",
-      ].join(" ")}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b bg-white border-border/60 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-14 md:h-16">
         <a href="#home" className="flex items-center gap-2 z-50 transition-opacity hover:opacity-80">
           <img src={zorixLogo} alt="ZORIX Logo" className="h-14 md:h-16 w-auto mix-blend-multiply" />
@@ -35,13 +31,14 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
+              state={{ fromNavbar: true }}
               className="relative text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <Button size="default" asChild>
             <a href="#cta">Get a Quote</a>
@@ -63,14 +60,15 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
+              state={{ fromNavbar: true }}
               onClick={() => setOpen(false)}
               className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <Button size="default" className="w-full mt-2" asChild>
             <a href="#cta" onClick={() => setOpen(false)}>
